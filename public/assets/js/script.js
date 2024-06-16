@@ -143,7 +143,7 @@ $(document).ready(function(){
 
  }
 
- const tableArray = [];
+ var tableArray = [];
 
  function generateTableData() {
     console.log('generating table data...');
@@ -160,6 +160,7 @@ $(document).ready(function(){
     }
 
 
+    $('#tableData').empty()
     for (let index = 0; index <= tableArray.length; index++) {
         if(tableArray.length > 0){
             $('#tableData').append(
@@ -169,7 +170,7 @@ $(document).ready(function(){
                 '<td>'+ tableArray[index].percentage +'</td>'+
                 '<td>'+ tableArray[index].commission +'</td>'+
                 '<td>'+
-                '<button type="button" class="btn btn-danger">-</button>'+
+                '<button type="button" class="btn btn-danger" onclick="deleteSalesperson('+index+')">-</button>'+
                 '</td>'+
                 '</tr>'
             );
@@ -180,6 +181,12 @@ $(document).ready(function(){
         }
         
     }
+ }
+
+ function deleteSalesperson(id){
+    console.log('delete this.. ', id);
+    tableArray.splice(id, 1)
+    generateTableData();
  }
 
  
