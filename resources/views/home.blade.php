@@ -18,35 +18,27 @@
     <div class="row" style="justify-content: center;">
         <div class="registration-form">
             <form>
+              <center><h3>Sales To PDF Generator</h3></center>
+              <br>
                 <div class="form-group">
                     <label>Property Address :</label>
-                    <textarea class="form-control item" aria-label="With textarea" id="paddress" placeholder="enter property address"></textarea>
+                    <textarea class="form-control item" aria-label="With textarea" id="paddress" placeholder="enter property address" required></textarea>
                 </div>
                 <div class="form-group">
                     <label>Sale / Lease Price :</label>
                     <input type="text" class="form-control item" id="price" placeholder="enter sale / lease price">
                 </div>
                 <br>
-                <div class="form-group">
-                    <button onclick="onGeneratePDF()" type="button" class="btn btn-block create-account">Generate PDF</button>
-                </div>
-                <br>
-            </form>
-            <div class="social-media">
-            </div>
-        </div>
-        &nbsp;&nbsp;&nbsp;
-        <div class="registration-form">
-            <form>
                 <div class="">
-                    <span>Salesperson List :</i></span>
-                </div>
-                <br>
-                <div class="row" style="justify-content: end;">
-                  <button type="button" class="btn btn-danger" onclick="onReset()">Reset</button> &nbsp;
-                  <button type="button" class="btn btn-success" onclick="openAddModal()" >+ Salespersons</button>
-                </div>
-                <br>
+                  <span>Salesperson List :</i></span>
+              </div>
+              <br>
+              <div class="row" style="justify-content: end;">
+                <button type="button" class="btn btn-danger" onclick="onReset()">Reset</button> &nbsp;
+                <button type="button" class="btn btn-success" onclick="openAddModal()" >+ Salespersons</button>
+              </div>
+              <br>
+              <div class="table-container">
                 <table class="table">
                   <thead>
                     <tr>
@@ -57,36 +49,27 @@
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Leman Teben</td>
-                      <td>2%</td>
-                      <td>20,000</td>
-                      <td>
-                          <button type="button" class="btn btn-danger">-</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Yakob Jacob</td>
-                      <td>5%</td>
-                      <td>10,000</td>
-                      <td>
-                          <button type="button" class="btn btn-danger">-</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry Utoh</td>
-                      <td>15%</td>
-                      <td>12,000</td>
-                      <td>
-                          <button type="button" class="btn btn-danger">-</button>
-                      </td>
-                    </tr>
+                  <tbody id="tableData">
                   </tbody>
-              </table>
+                </table>
+              </div>
+                
+            </form>
+            <div class="social-media">
+            </div>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="registration-form">
+            <form>
+              <div class="form-group">
+                <button onclick="onGeneratePDF()" type="button" class="btn btn-block create-account">Generate PDF</button>
+            </div>
+            <br>
+            <iframe class="pdf" 
+                src=
+            "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210101201653/PDF.pdf"
+                        width="470" height="630">
+                    </iframe>
             </form>
             <div class="social-media">
             </div>

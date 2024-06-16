@@ -1,9 +1,10 @@
 $(document).ready(function(){
   $('#birth-date').mask('00/00/0000');
   $('#phone-number').mask('0000-0000');
- })
 
- let tablearray = [];
+  generateTableData();
+
+ })
 
  function onGeneratePDF() {
 
@@ -120,16 +121,31 @@ $(document).ready(function(){
 
  function onApply(){
     console.log('>>> ', i);
+    $('#tableData').empty();
+
     //trigger add salesperson
     for (let index = 0; index <= i; index++) {
         console.log('checking value >>>> .. ', $('#salesperson_'+index).val());
         console.log('checking value >>>> .. ', $('#percentage_'+index).val());
+        tableArray.push(
+            {
+                salesperson: $('#salesperson_'+index).val(),
+                percentage: $('#percentage_'+index).val(),
+                commission: 1
+            }
+        );
 
     }
+    $('#addSalesPersonModal').modal('hide');
+    generateTableData();
+
  }
 
  function onReset(){
     console.log('reset all field..');
+    $('#tableData').empty();
+    tableArray.length = 0;
+    generateTableData();
  }
 
  function closeModal(){
@@ -137,3 +153,32 @@ $(document).ready(function(){
     $('#addSalesPersonModal').modal('hide');
 
  }
+
+ const tableArray = [];
+
+ function generateTableData() {
+    console.log('generating table data...');
+
+    for (let index = 0; index <= tableArray.length; index++) {
+        if(tableArray.length > 0){
+            $('#tableData').append(
+                '<tr>'+
+                '<th scope="row">'+ (index+1) +'</th>'+
+                '<td>'+ tableArray[index].salesperson +'</td>'+
+                '<td>'+ tableArray[index].percentage +'</td>'+
+                '<td>'+ tableArray[index].commission +'</td>'+
+                '<td>'+
+                '<button type="button" class="btn btn-danger">-</button>'+
+                '</td>'+
+                '</tr>'
+            );
+        } else {
+            $('#tableData').append(
+                '<tr><td colspan=5>no record available</td></tr>'
+            )
+        }
+        
+    }
+ }
+
+ 
