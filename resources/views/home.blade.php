@@ -33,6 +33,9 @@
                   <span>Salesperson List :</i></span>
               </div>
               <br>
+              {{-- <div class="alert alert-danger" id="warningalert">
+                must <strong>Fill All Detail Above</strong> to continue add Salesperson.
+              </div> --}}
               <div class="row" style="justify-content: end;">
                 <button type="button" class="btn btn-danger" onclick="onReset()">Reset</button> &nbsp;
                 <button type="button" class="btn btn-success" onclick="openAddModal()" >+ Salespersons</button>
@@ -61,15 +64,15 @@
         &nbsp;&nbsp;&nbsp;
         <div class="registration-form">
             <form>
+              <div class="alert alert-danger" id="warningalert">
+                must have <strong>Salesperson</strong> at least one to generate PDF.
+              </div>
               <div class="form-group">
-                <button onclick="onGeneratePDF()" type="button" class="btn btn-block create-account">Generate PDF</button>
-            </div>
+                <button onclick="onGeneratePDF()" id="generateBtn" type="button" class="btn btn-block create-account">Generate PDF</button>
+              </div>
             <br>
-            <iframe class="pdf" 
-                src=
-            "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210101201653/PDF.pdf"
-                        width="470" height="630">
-                    </iframe>
+            <iframe class="pdf" src="http://127.0.0.1:8000/generatePdf" width="470" height="630">
+            </iframe>
             </form>
             <div class="social-media">
             </div>
@@ -101,13 +104,9 @@
                 <div class="col-3">
                   <div class="form-group">
                     <label>Percentage(%) :</label>
-                    <input type="text" class="form-control item" id="percentage_0" placeholder="enter percentage">
+                    <input type="number" class="form-control item" id="percentage_0" placeholder="enter percentage">
                 </div>
                 </div>
-                {{-- <div class="col-2">
-                  <label>&nbsp;</label><br>
-                  <button type="button" class="btn btn-danger" onclick="deleteSalesPersonRow()">-</button>
-                </div> --}}
               </div>
             </div>
             
@@ -130,6 +129,7 @@
     <!-- Removed duplicate jQuery and added scripts in correct order -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="assets/plugin/sweet-alert/sweetalert2.all.min.js"></script>
+    <script src="assets/plugin/mask-money/jquery.maskMoney.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

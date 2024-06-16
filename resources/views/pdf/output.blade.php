@@ -155,6 +155,7 @@
 					<td>$ 1234.00</td>
 				</tr>
 			</table>
+			<br><br>
 		</div>
 	</body>
 </html>

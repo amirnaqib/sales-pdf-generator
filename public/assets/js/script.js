@@ -6,6 +6,10 @@ $(document).ready(function(){
 
  })
 
+ $(function() {
+    $('#price').maskMoney();
+  })
+
  function onGeneratePDF() {
 
   let paddress = $('#paddress').val();
@@ -31,9 +35,10 @@ $(document).ready(function(){
   var formData = new FormData();
   formData.append('paddress', paddress);
   formData.append('price', price);
+  formData.append('salesperson', JSON.stringify(tableArray));
 
   $.ajax({
-      url:"/generatePdf",
+      url:"/submitPdf",
       type: 'post',
       contentType: false,
       processData: false,
@@ -43,17 +48,6 @@ $(document).ready(function(){
       data: formData,
       success:function(xhr, res){	
           swal.close();
-          // swal.fire(
-          //     {
-          //     text:"Generating Pdf..",
-          //     icon:"success",
-          //     buttonsStyling:!1,
-          //     showConfirmButton: false,
-          //     customClass:{confirmButton:"btn btn-light-primary"}
-          // });
-          
-
-
       },
       error:function(xhr, res){
           console.log('error...', xhr);
@@ -119,19 +113,34 @@ $(document).ready(function(){
     $('#container_'+id).empty();
  }
 
+//calculation for percent
+ function percentCalculation(percentage){
+    var saleprice = $('#price').val();
+    console.log('testing check >>>> ', saleprice);
+
+    const sanitizedString = saleprice.replace(/,/g, '');
+    const value = parseFloat(sanitizedString);
+    const result = value * (percentage / 100);
+    return result.toFixed(2);
+ }
+
  function onApply(){
     console.log('>>> ', i);
     $('#tableData').empty();
 
+
+
     //trigger add salesperson
     for (let index = 0; index <= i; index++) {
-        console.log('checking value >>>> .. ', $('#salesperson_'+index).val());
-        console.log('checking value >>>> .. ', $('#percentage_'+index).val());
+        console.log('checking salesperson >>>> .. ', $('#salesperson_'+index).val());
+        console.log('checking percentage >>>> .. ', $('#percentage_'+index).val());
+        console.log('checking commission >>>> .. ', percentCalculation($('#percentage_'+index).val()));
+
         tableArray.push(
             {
                 salesperson: $('#salesperson_'+index).val(),
                 percentage: $('#percentage_'+index).val(),
-                commission: 1
+                commission: percentCalculation($('#percentage_'+index).val())
             }
         );
 
@@ -158,6 +167,18 @@ $(document).ready(function(){
 
  function generateTableData() {
     console.log('generating table data...');
+     //to make a condition if the salesperson list is empty
+    if(tableArray.length <= 0){
+        $('#generateBtn').attr('disabled','disabled');
+        $('#warningalert').show();
+        
+    } else {
+        $('#generateBtn').removeAttr('disabled');
+        $('#warningalert').hide();
+
+
+    }
+
 
     for (let index = 0; index <= tableArray.length; index++) {
         if(tableArray.length > 0){

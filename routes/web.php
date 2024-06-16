@@ -7,5 +7,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::post("/generatePdf", [HomeController::class, 'generatePdf']);
+Route::get("/generatePdf", [HomeController::class, 'generatePdf']);
+Route::post("/submitPdf", [HomeController::class, 'submitToPDF']);
 Route::get("/viewPdf", [HomeController::class, 'viewOutput']);
