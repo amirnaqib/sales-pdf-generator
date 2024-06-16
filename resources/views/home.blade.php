@@ -21,11 +21,11 @@
               <center><h3>Sales To PDF Generator</h3></center>
               <br>
                 <div class="form-group">
-                    <label>Property Address :</label>
+                    <label>Property Address : <span style="color: red">&#42;</span></label>
                     <textarea class="form-control item" aria-label="With textarea" id="paddress" placeholder="enter property address" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Sale / Lease Price :</label>
+                    <label>Sale / Lease Price : <span style="color: red">&#42;</span>                    </label>
                     <input type="text" class="form-control item" id="price" placeholder="enter sale / lease price">
                 </div>
                 <br>
@@ -93,17 +93,20 @@
     
           <!-- Modal body -->
           <div class="modal-body">
+            <div class="alert alert-danger" id="modalformalert">
+              must <strong>Fill All Detail Above</strong> to continue add Salesperson.
+            </div>
             <div id="fieldcontainer">
               <div class="row" id="container_0">
                 <div class="col-7">
                     <div class="form-group">
-                        <label>Salesperson :</label>
+                        <label>Salesperson : <span style="color: red">&#42;</span></label>
                         <input type="text" class="form-control item" id="salesperson_0" placeholder="enter salesperson name">
                     </div>
                 </div>
                 <div class="col-3">
                   <div class="form-group">
-                    <label>Percentage(%) :</label>
+                    <label>Percentage(%) : <span style="color: red">&#42;</span></label>
                     <input type="number" class="form-control item" id="percentage_0" placeholder="enter percentage">
                 </div>
                 </div>
@@ -118,7 +121,7 @@
           <!-- Modal footer -->
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="closeModal()">Close</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="onApply()">Apply</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="onClickApply()">Apply</button>
 
           </div>
     

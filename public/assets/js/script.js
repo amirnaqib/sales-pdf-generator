@@ -79,6 +79,19 @@ $(document).ready(function(){
 
     }
  }
+
+ function onClickApply(){
+    for (let i = 0; i <= salespersonrow; i++) {
+        if($('#salesperson_'+i).val() != '' && $('#percentage_'+i).val() != ''){
+            onApply();
+            $('#modalformalert').hide();
+
+        } else {
+            $('#modalformalert').show();
+
+        }
+    }
+ }
  
 
  function openAddModal(){
@@ -90,30 +103,30 @@ $(document).ready(function(){
 
  }
 
- var i=0;
+ var salespersonrow=0;
  function addSalesPersonRow(){
     console.log('trigger add row..');
     //to track how many row & id 
-    console.log('current index is >>> ', ++i);
+    console.log('current index is >>> ', ++salespersonrow);
 
     //append array on row per click
     $('#fieldcontainer').append(
-        '<div class="row" id="container_'+ i +'">'+
+        '<div class="row" id="container_'+ salespersonrow +'">'+
                 '<div class="col-7">'+
                     '<div class="form-group">'+
                         '<label>Salesperson :</label>'+
-                        '<input type="text" class="form-control item" id="salesperson_'+ i +'" placeholder="enter salesperson name">'+
+                        '<input type="text" class="form-control item" id="salesperson_'+ salespersonrow +'" placeholder="enter salesperson name">'+
                     '</div>'+
                 '</div>'+
                 '<div class="col-3">'+
                   '<div class="form-group">'+
                     '<label>Percentage(%) :</label>'+
-                    '<input type="text" class="form-control item" id="percentage_'+ i +'" placeholder="enter percentage">'+
+                    '<input type="text" class="form-control item" id="percentage_'+ salespersonrow +'" placeholder="enter percentage">'+
                 '</div>'+
                 '</div>'+
                 '<div class="col-2">'+
                   '<label>&nbsp;</label><br>'+
-                  '<button type="button" class="btn btn-danger" onclick="deleteSalesPersonRow('+ i +')">-</button>'+
+                  '<button type="button" class="btn btn-danger" onclick="deleteSalesPersonRow('+ salespersonrow +')">-</button>'+
                 '</div>'+
               '</div>'
     );
@@ -138,13 +151,12 @@ $(document).ready(function(){
  }
 
  function onApply(){
-    console.log('>>> ', i);
     $('#tableData').empty();
 
 
 
     //trigger add salesperson
-    for (let index = 0; index <= i; index++) {
+    for (let index = 0; index <= salespersonrow; index++) {
         console.log('checking salesperson >>>> .. ', $('#salesperson_'+index).val());
         console.log('checking percentage >>>> .. ', $('#percentage_'+index).val());
         console.log('checking commission >>>> .. ', percentCalculation($('#percentage_'+index).val()));
