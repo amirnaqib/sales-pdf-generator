@@ -155,6 +155,10 @@ $(document).ready(function(){
     $('#tableData').empty();
     tableArray.length = 0;
     generateTableData();
+
+    $('#paddress').val('');
+    $('#price').val('');
+
  }
 
  function closeModal(){
