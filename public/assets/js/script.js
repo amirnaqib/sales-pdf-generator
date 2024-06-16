@@ -183,6 +183,8 @@ $(document).ready(function(){
 
     $('#paddress').val('');
     $('#price').val('');
+    $('#iframeid').attr('src', '');
+
 
  }
 
