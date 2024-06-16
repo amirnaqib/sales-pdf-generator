@@ -7,7 +7,8 @@ body{
 }
 
 .registration-form form{
-    /* height: 670px; */
+    width: 613px;
+    height: 820px;
     background-color: #fff;
     max-width: 650px;
     margin: auto;

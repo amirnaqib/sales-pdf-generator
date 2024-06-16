@@ -27,52 +27,6 @@
                     <input type="text" class="form-control item" id="price" placeholder="enter sale / lease price">
                 </div>
                 <br>
-                <div class="row" style="justify-content: end;">
-                    <button type="button" class="btn btn-danger" onclick="onReset()">Reset</button> &nbsp;
-                    <button type="button" class="btn btn-success" onclick="openAddModal()" >+ Salespersons</button>
-                </div>
-                <br>
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Salespersons</th>
-                        <th scope="col">Percentage</th>
-                        <th scope="col">Commission</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Leman Teben</td>
-                        <td>2%</td>
-                        <td>20,000</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">-</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Yakob Jacob</td>
-                        <td>5%</td>
-                        <td>10,000</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">-</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry Utoh</td>
-                        <td>15%</td>
-                        <td>12,000</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">-</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                </table>
-                <br>
                 <div class="form-group">
                     <button onclick="onGeneratePDF()" type="button" class="btn btn-block create-account">Generate PDF</button>
                 </div>
@@ -81,52 +35,58 @@
             <div class="social-media">
             </div>
         </div>
-        &nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
         <div class="registration-form">
             <form>
                 <div class="">
-                    <span>History Log :</i></span>
+                    <span>Salesperson List :</i></span>
                 </div>
+                <br>
+                <div class="row" style="justify-content: end;">
+                  <button type="button" class="btn btn-danger" onclick="onReset()">Reset</button> &nbsp;
+                  <button type="button" class="btn btn-success" onclick="openAddModal()" >+ Salespersons</button>
+                </div>
+                <br>
                 <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Salespersons</th>
-                        <th scope="col">Percentage</th>
-                        <th scope="col">Commission</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Leman Teben</td>
-                        <td>2%</td>
-                        <td>20,000</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">-</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Yakob Jacob</td>
-                        <td>5%</td>
-                        <td>10,000</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">-</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry Utoh</td>
-                        <td>15%</td>
-                        <td>12,000</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">-</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                </table>
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Salespersons</th>
+                      <th scope="col">Percentage</th>
+                      <th scope="col">Commission</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Leman Teben</td>
+                      <td>2%</td>
+                      <td>20,000</td>
+                      <td>
+                          <button type="button" class="btn btn-danger">-</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Yakob Jacob</td>
+                      <td>5%</td>
+                      <td>10,000</td>
+                      <td>
+                          <button type="button" class="btn btn-danger">-</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry Utoh</td>
+                      <td>15%</td>
+                      <td>12,000</td>
+                      <td>
+                          <button type="button" class="btn btn-danger">-</button>
+                      </td>
+                    </tr>
+                  </tbody>
+              </table>
             </form>
             <div class="social-media">
             </div>
@@ -147,32 +107,37 @@
     
           <!-- Modal body -->
           <div class="modal-body">
-            <div class="row">
-              <div class="col-7">
+            <div id="fieldcontainer">
+              <div class="row" id="container_0">
+                <div class="col-7">
+                    <div class="form-group">
+                        <label>Salesperson :</label>
+                        <input type="text" class="form-control item" id="salesperson_0" placeholder="enter salesperson name">
+                    </div>
+                </div>
+                <div class="col-3">
                   <div class="form-group">
-                      <label>Salesperson :</label>
-                      <input type="text" class="form-control item" id="price" placeholder="enter salesperson name">
-                  </div>
-              </div>
-              <div class="col-3">
-                <div class="form-group">
-                  <label>Percentage(%) :</label>
-                  <input type="text" class="form-control item" id="price" placeholder="enter percentage">
-              </div>
-              </div>
-              <div class="col-2">
-                <label>&nbsp;</label><br>
-                <button type="button" class="btn btn-danger" onclick="deleteSalesPersonRow()">-</button>
+                    <label>Percentage(%) :</label>
+                    <input type="text" class="form-control item" id="percentage_0" placeholder="enter percentage">
+                </div>
+                </div>
+                {{-- <div class="col-2">
+                  <label>&nbsp;</label><br>
+                  <button type="button" class="btn btn-danger" onclick="deleteSalesPersonRow()">-</button>
+                </div> --}}
               </div>
             </div>
+            
             <div class="row" style="justify-content: center;">
-              <button type="button" class="btn btn-success">+ Add Salesperson</button>
+              <button type="button" class="btn btn-success" onclick="addSalesPersonRow()">+ Add Salesperson</button>
             </div>
           </div>
     
           <!-- Modal footer -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="closeModal()">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="onApply()">Apply</button>
+
           </div>
     
         </div>

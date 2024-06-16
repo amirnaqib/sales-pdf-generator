@@ -3,6 +3,8 @@ $(document).ready(function(){
   $('#phone-number').mask('0000-0000');
  })
 
+ let tablearray = [];
+
  function onGeneratePDF() {
 
   let paddress = $('#paddress').val();
@@ -75,26 +77,63 @@ $(document).ready(function(){
   console.log('open modal..');
   // addSalesPersonModal
   $('#addSalesPersonModal').modal('show');
-
   //init row array
 
 
  }
 
+ var i=0;
  function addSalesPersonRow(){
     console.log('trigger add row..');
+    //to track how many row & id 
+    console.log('current index is >>> ', ++i);
 
     //append array on row per click
+    $('#fieldcontainer').append(
+        '<div class="row" id="container_'+ i +'">'+
+                '<div class="col-7">'+
+                    '<div class="form-group">'+
+                        '<label>Salesperson :</label>'+
+                        '<input type="text" class="form-control item" id="salesperson_'+ i +'" placeholder="enter salesperson name">'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-3">'+
+                  '<div class="form-group">'+
+                    '<label>Percentage(%) :</label>'+
+                    '<input type="text" class="form-control item" id="percentage_'+ i +'" placeholder="enter percentage">'+
+                '</div>'+
+                '</div>'+
+                '<div class="col-2">'+
+                  '<label>&nbsp;</label><br>'+
+                  '<button type="button" class="btn btn-danger" onclick="deleteSalesPersonRow('+ i +')">-</button>'+
+                '</div>'+
+              '</div>'
+    );
 
  }
 
- function deleteSalesPersonRow(){
-    console.log('trigger delete row..');
-
+ function deleteSalesPersonRow(id){
+    console.log('trigger delete row number .. ', id);
     //append array on row per click
+    $('#container_'+id).empty();
+ }
 
+ function onApply(){
+    console.log('>>> ', i);
+    //trigger add salesperson
+    for (let index = 0; index <= i; index++) {
+        console.log('checking value >>>> .. ', $('#salesperson_'+index).val());
+        console.log('checking value >>>> .. ', $('#percentage_'+index).val());
+
+    }
  }
 
  function onReset(){
     console.log('reset all field..');
+ }
+
+ function closeModal(){
+    console.log('close modal ...');
+    $('#addSalesPersonModal').modal('hide');
+
  }
