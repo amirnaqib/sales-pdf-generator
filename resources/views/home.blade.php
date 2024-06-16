@@ -33,12 +33,12 @@
                   <span>Salesperson List :</i></span>
               </div>
               <br>
-              {{-- <div class="alert alert-danger" id="warningalert">
+              <div class="alert alert-danger" id="formalert">
                 must <strong>Fill All Detail Above</strong> to continue add Salesperson.
-              </div> --}}
+              </div>
               <div class="row" style="justify-content: end;">
                 <button type="button" class="btn btn-danger" onclick="onReset()">Reset</button> &nbsp;
-                <button type="button" class="btn btn-success" onclick="openAddModal()" >+ Salespersons</button>
+                <button type="button" id="addSalesPersonBtn" class="btn btn-success" onclick="onClickAddBtn()" >+ Salespersons</button>
               </div>
               <br>
               <div class="table-container">
@@ -71,7 +71,7 @@
                 <button onclick="onGeneratePDF()" id="generateBtn" type="button" class="btn btn-block create-account">Generate PDF</button>
               </div>
             <br>
-            <iframe class="pdf" src="http://127.0.0.1:8000/generatePdf" width="470" height="630">
+            <iframe class="pdf" id="iframeid" src="" width="470" height="630">
             </iframe>
             </form>
             <div class="social-media">

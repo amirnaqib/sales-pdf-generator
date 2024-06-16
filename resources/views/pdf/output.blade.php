@@ -119,6 +119,7 @@
 
 	<body>
 		<div class="invoice-box">
+			@foreach ($salesperson as $data)				
 			<table>
 				<tr class="top">
 					<td colspan="2">
@@ -129,7 +130,7 @@
 								</td>
 
 								<td>
-									Created On : January 1, 2023<br />
+									Created On : {{ $date }}<br />
 									Created By : User
 								</td>
 							</tr>
@@ -144,18 +145,19 @@
 				</tr>
 
 				<tr class="details">
-					<td>No.1, Jalan Dua, Taman 3, 12300 Perak</td>
+					<td>{{ $address }}</td>
 
-					<td>Ali Azam</td>
+					<td>{{ $data->salesperson }}</td>
 				</tr>
 
 				<tr class="heading">
 					<td>Total Commission Received</td>
 
-					<td>$ 1234.00</td>
+					<td>${{ number_format($data->commission,2,",",".") }}</td>
 				</tr>
 			</table>
 			<br><br>
+			@endforeach
 		</div>
 	</body>
 </html>

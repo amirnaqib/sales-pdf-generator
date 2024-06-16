@@ -38,8 +38,8 @@ $(document).ready(function(){
   formData.append('salesperson', JSON.stringify(tableArray));
 
   $.ajax({
-      url:"/submitPdf",
-      type: 'post',
+      url:"/getPdf",
+      type: 'get',
       contentType: false,
       processData: false,
       dataType: 'json',
@@ -48,9 +48,10 @@ $(document).ready(function(){
       data: formData,
       success:function(xhr, res){	
           swal.close();
+          $('#iframeid').attr('src', 'http://127.0.0.1:8000/getPdf?paddress='+paddress+'&salesperson='+JSON.stringify(tableArray)+'&price='+price);
+
       },
       error:function(xhr, res){
-          console.log('error...', xhr);
               swal.close();
               swal.fire(
                   {
@@ -60,12 +61,24 @@ $(document).ready(function(){
                   confirmButtonText:"Ok, got it!",
                   customClass:{confirmButton:"btn btn-light-primary"}
               });
+              $('#iframeid').attr('src', 'http://127.0.0.1:8000/getPdf?paddress='+paddress+'&salesperson='+JSON.stringify(tableArray)+'&price='+price);
+
           
       }
   });
 
  }
 
+ function onClickAddBtn(){
+    if($('#paddress').val() != '' && $('#price').val() != ''){
+        openAddModal();
+        $('#formalert').hide();
+
+    } else {
+        $('#formalert').show();
+
+    }
+ }
  
 
  function openAddModal(){
