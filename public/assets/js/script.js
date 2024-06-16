@@ -15,58 +15,7 @@ $(document).ready(function(){
   let paddress = $('#paddress').val();
   let price = $('#price').val();
 
-  console.log('generating pdf for ... : ', paddress,price);
-  swal.fire({
-    text:"generating pdf..",
-    allowOutsideClick: false,
-    showCloseButton: false,
-    allowEscapeKey: false,
-    didOpen: ()=> {
-        swal.showLoading();
-    }				
-  });
-
-  $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
-
-  var formData = new FormData();
-  formData.append('paddress', paddress);
-  formData.append('price', price);
-  formData.append('salesperson', JSON.stringify(tableArray));
-
-  $.ajax({
-      url:"/getPdf",
-      type: 'get',
-      contentType: false,
-      processData: false,
-      dataType: 'json',
-      cache: false,
-      enctype: 'multipart/form-data',
-      data: formData,
-      success:function(xhr, res){	
-          swal.close();
-          $('#iframeid').attr('src', 'http://127.0.0.1:8000/getPdf?paddress='+paddress+'&salesperson='+JSON.stringify(tableArray)+'&price='+price);
-
-      },
-      error:function(xhr, res){
-              swal.close();
-              swal.fire(
-                  {
-                  text:"Oops, something wrong.",
-                  icon:"error",
-                  buttonsStyling:!1,
-                  confirmButtonText:"Ok, got it!",
-                  customClass:{confirmButton:"btn btn-light-primary"}
-              });
-              $('#iframeid').attr('src', 'http://127.0.0.1:8000/getPdf?paddress='+paddress+'&salesperson='+JSON.stringify(tableArray)+'&price='+price);
-
-          
-      }
-  });
-
+  $('#iframeid').attr('src', 'http://127.0.0.1:8000/getPdf?paddress='+paddress+'&salesperson='+JSON.stringify(tableArray)+'&price='+price);
  }
 
  function onClickAddBtn(){
